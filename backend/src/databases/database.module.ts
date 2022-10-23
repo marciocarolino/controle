@@ -14,6 +14,8 @@ import { RevenueEntity } from './entities/revenue.entity';
       password: process.env.DATABASE_PASSWORD,
       database: process.env.DATABASE_DB,
       entities: [RevenueEntity],
+      migrations: ['./dist/database/migrations/*.js'],
+      //migrations: ['src/databases/migrations/**/*{.ts,.js}'],
       synchronize: false,
     }),
   ],

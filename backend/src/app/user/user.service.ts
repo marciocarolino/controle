@@ -9,4 +9,21 @@ export class UserService {
     @InjectRepository(User)
     private readonly userEntity: Repository<User>,
   ) {}
+
+  async userAll(): Promise<any> {
+    return this.userEntity.find({
+      order: { id: 'ASC' },
+    });
+  }
+  async userGetById(id: number): Promise<any> {
+    const userFind = await this.userEntity.findOne({
+      where: { id: id },
+    });
+
+    if (!userFind) {
+      throw new Error();
+    }
+
+    return userFind;
+  }
 }

@@ -13,6 +13,7 @@ export class RevenueService {
 
   async revenueAll(): Promise<any> {
     return this.revenuEntity.find({
+      relations: { user: true },
       where: { actived: true },
       order: { id: 'ASC' },
     });

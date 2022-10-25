@@ -7,9 +7,6 @@ export class ExpensesDTO {
   @ApiProperty({ description: 'name_expenses', example: 'conta de luz' })
   name_expenses: string;
 
-  @ApiProperty({ description: 'value_expenses', example: 11.5 })
-  value_expenses: number;
-
   @ApiProperty({ description: 'description', example: 'descricao da conta' })
   descripption: string;
 

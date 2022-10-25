@@ -1,9 +1,20 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { User } from './user.entity';
 
 @Entity('revenue')
 export class RevenueEntity {
   @PrimaryGeneratedColumn({ name: 'id' })
   id: number;
+
+  @ManyToOne(() => User, (user) => user.fixedExpenses)
+  @JoinColumn({ name: 'id_user' })
+  user: User;
 
   @Column({ name: 'name_revenue' })
   name_revenue: string;

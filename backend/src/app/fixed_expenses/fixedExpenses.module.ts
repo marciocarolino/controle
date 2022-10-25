@@ -10,4 +10,4 @@ import { FixedExpenses } from 'src/databases/entities/fixedExpenses.entity';
   providers: [FixedExpensesService],
   exports: [FixedExpensesService],
 })
-export class FixedExpenses {}
+export class ModuleFixedExpenses {}

@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { FixedExpenses } from 'src/databases/entities/fixedExpenses.entity';
+import { FixedExpenses } from '../../databases/entities/fixedExpenses.entity';
+import { User } from 'src/databases/entities/user.entity';
 import { Repository } from 'typeorm';
 import { ExpensesDTO } from './dto/expenses.dto';
 
@@ -9,6 +10,8 @@ export class FixedExpensesService {
   constructor(
     @InjectRepository(FixedExpenses)
     private readonly fixedExpensesRepository: Repository<FixedExpenses>,
+    @InjectRepository(User)
+    private readonly userEntity: Repository<User>,
   ) {}
 
   async fixedExpensesAll(): Promise<any> {

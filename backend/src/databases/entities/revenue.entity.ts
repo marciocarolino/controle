@@ -3,8 +3,10 @@ import {
   Entity,
   JoinColumn,
   ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
+import { PaidBills } from './paidBills.entity';
 import { User } from './user.entity';
 
 @Entity('revenue')
@@ -13,8 +15,11 @@ export class RevenueEntity {
   id: number;
 
   @ManyToOne(() => User, (user) => user.fixedExpenses)
-  @JoinColumn({ name: 'id_user' })
+  @JoinColumn({ name: 'user_id' })
   user: User;
+
+  @OneToMany(() => PaidBills, (paidBills) => paidBills.revenue)
+  paidBills: PaidBills;
 
   @Column({ name: 'name_revenue' })
   name_revenue: string;
@@ -23,10 +28,13 @@ export class RevenueEntity {
   value_revenue: number;
 
   @Column({ name: 'description' })
-  descripption: string;
+  description: string;
 
   @Column({ name: 'actived', type: 'boolean' })
   actived: boolean;
+
+  @Column({ name: 'total' })
+  total: number;
 
   @Column({ name: 'created_at', type: 'timestamp' })
   created_at: Date;

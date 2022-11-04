@@ -38,7 +38,7 @@ export class RevenueService {
 
     findRevenue.name_revenue = revenueDTO.name_revenue;
     findRevenue.value_revenue = revenueDTO.value_revenue;
-    findRevenue.descripption = revenueDTO.descripption;
+    findRevenue.description = revenueDTO.description;
     findRevenue.updated_at = new Date();
 
     return this.revenuEntity.save(findRevenue);

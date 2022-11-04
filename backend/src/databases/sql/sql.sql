@@ -39,3 +39,17 @@ create table public.fixedExpenses(
 ); 
 
 select * from public.fixedExpenses;
+
+
+//Contas pagas
+create table public.paidBills(
+ id serial primary key,
+ name_Paid_Bills varchar(255),
+ value_paidBills int,
+ descripption varchar(255),
+ created_at Date,
+ updated_at Date,
+ revenue_id int,
+ foreign key (revenue_id)
+ references public.revenue(id)
+);

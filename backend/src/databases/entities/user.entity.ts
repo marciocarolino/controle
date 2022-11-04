@@ -15,4 +15,13 @@ export class User {
 
   @OneToMany(() => RevenueEntity, (revenueEntityue) => revenueEntityue.user)
   revenueEntityue: RevenueEntity;
+
+  @Column({ name: 'actived' })
+  actived: boolean;
+
+  @Column({ type: 'timestamp', name: 'created_at' })
+  created_at: Date;
+
+  @Column({ type: 'timestamp', name: 'updated_at' })
+  updated_at: Date;
 }

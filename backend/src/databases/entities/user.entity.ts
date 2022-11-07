@@ -1,6 +1,7 @@
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { FixedExpenses } from './fixedExpenses.entity';
 import { RevenueEntity } from './revenue.entity';
+import { WalletEntity } from './wallet.entity';
 
 @Entity('user')
 export class User {
@@ -15,6 +16,9 @@ export class User {
 
   @OneToMany(() => RevenueEntity, (revenueEntityue) => revenueEntityue.user)
   revenueEntityue: RevenueEntity;
+
+  @OneToMany(() => WalletEntity, (wallet) => wallet.user)
+  wallet: WalletEntity;
 
   @Column({ name: 'actived' })
   actived: boolean;

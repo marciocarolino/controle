@@ -5,6 +5,7 @@ import { RevenueEntity } from './entities/revenue.entity';
 import { User } from './entities/user.entity';
 import { PaidBills } from './entities/paidBills.entity';
 import { FixedExpenses } from './entities/fixedExpenses.entity';
+import { WalletEntity } from './entities/wallet.entity';
 
 @Module({
   imports: [
@@ -16,7 +17,7 @@ import { FixedExpenses } from './entities/fixedExpenses.entity';
       username: process.env.DATABASE_USER,
       password: process.env.DATABASE_PASSWORD,
       database: process.env.DATABASE_DB,
-      entities: [RevenueEntity, User, PaidBills, FixedExpenses],
+      entities: [RevenueEntity, User, PaidBills, FixedExpenses, WalletEntity],
       migrations: ['./dist/database/migrations/*.js'],
       //migrations: ['src/databases/migrations/**/*{.ts,.js}'],
       synchronize: false,

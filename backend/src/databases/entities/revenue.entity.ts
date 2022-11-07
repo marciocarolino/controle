@@ -33,9 +33,6 @@ export class RevenueEntity {
   @Column({ name: 'actived', type: 'boolean' })
   actived: boolean;
 
-  @Column({ name: 'total' })
-  total: number;
-
   @Column({ name: 'created_at', type: 'timestamp' })
   created_at: Date;
 

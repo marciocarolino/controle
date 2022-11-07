@@ -1,5 +1,4 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { User } from 'src/databases/entities/user.entity';
 
 export class RevenueDTO {
   @ApiProperty({ description: 'id', example: 1 })
@@ -14,9 +13,6 @@ export class RevenueDTO {
   @ApiProperty({ description: 'description', example: 'descricao da conta' })
   description: string;
 
-  @ApiProperty({ description: 'total', example: 500.0 })
-  total: number;
-
   @ApiProperty({ description: 'actived', example: true })
   actived: boolean;
 
@@ -26,5 +22,10 @@ export class RevenueDTO {
   @ApiProperty({ description: 'updated_at', example: new Date() })
   updated_at: Date;
 
-  user: User;
+  user_id: any;
+}
+
+export class RevenueWalletDTO {
+  total: number;
+  user_id: any;
 }

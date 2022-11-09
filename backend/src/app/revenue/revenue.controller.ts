@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { RevenueDTO } from './dto/revenue.dto';
 import { RevenueService } from './revenue.service';
@@ -12,6 +12,13 @@ export class RevenueController {
   @ApiResponse({ status: 200, description: 'Find Revenue All' })
   async revenueAll(): Promise<any> {
     return this.revenueService.revenueAll();
+  }
+
+  @Get(':id')
+  @ApiOperation({ summary: 'FindOne Revenue' })
+  @ApiResponse({ status: 200, description: 'FindOne Revenue' })
+  async revenueOne(@Param('id') id: any): Promise<any> {
+    return this.revenueService.revenueFindOne(id);
   }
 
   @Post()

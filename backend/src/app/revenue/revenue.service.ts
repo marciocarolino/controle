@@ -21,29 +21,52 @@ export class RevenueService {
 
   async revenueAll(): Promise<any> {
     const findRevenue = await this.revenuEntity.find({
-      relations: { user: true },
+      relations: { user: { revenueEntityue: true } },
       where: { actived: true },
     });
 
     const result: any = [];
 
     for (const new_result of findRevenue) {
+      const wallet_total = await this.walletEntity.find({
+        where: { user: { id: new_result.user.id } },
+      });
+
+      wallet_total.map((result_wallet) => {
+        return {
+          total: result_wallet.total,
+          user_id: result_wallet.user,
+        };
+      });
+
       result.push({
-        id: new_result.id,
+        id_user: new_result.user.id,
         user_name: new_result.user.name,
         name_revenue: new_result.name_revenue,
-        total: new_result.user.wallet,
+        value_revenue: new_result.value_revenue,
+        total: wallet_total,
         description: new_result.description,
       });
     }
     return result;
+  }
 
-    // const findWallet = await this.walletEntity.findOne({
-    //   relations: { user: true },
-    //   where: { user: { id: user_id } },
-    // });
+  async revenueFindOne(user_id: any): Promise<any> {
+    const findOneRevenue = await this.revenuEntity.findOne({
+      relations: { user: true },
+      where: { user: { id: user_id } },
+    });
 
-    // return findWallet;
+    const findOneWallet = await this.walletEntity.findOne({
+      where: { user: { id: user_id } },
+    });
+    const result = {
+      id_User: findOneRevenue.user.id,
+      name: findOneRevenue.user.name,
+      total: findOneWallet.total,
+    };
+
+    return result;
   }
 
   async createRevenue(revenueDTO: RevenueDTO): Promise<any> {

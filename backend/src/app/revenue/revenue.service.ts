@@ -51,7 +51,7 @@ export class RevenueService {
     return result;
   }
 
-  async revenueFindOne(user_id: any): Promise<any> {
+  async revenueFindOne(user_id: number): Promise<any> {
     const findOneRevenue = await this.revenuEntity.findOne({
       relations: { user: true },
       where: { user: { id: user_id } },
@@ -60,6 +60,7 @@ export class RevenueService {
     const findOneWallet = await this.walletEntity.findOne({
       where: { user: { id: user_id } },
     });
+
     const result = {
       id_User: findOneRevenue.user.id,
       name: findOneRevenue.user.name,

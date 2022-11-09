@@ -17,7 +17,7 @@ export class RevenueController {
   @Get(':id')
   @ApiOperation({ summary: 'FindOne Revenue' })
   @ApiResponse({ status: 200, description: 'FindOne Revenue' })
-  async revenueOne(@Param('id') id: any): Promise<any> {
+  async revenueOne(@Param('id') id: number): Promise<any> {
     return this.revenueService.revenueFindOne(id);
   }
 

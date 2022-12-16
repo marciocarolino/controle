@@ -20,7 +20,7 @@ export class User {
   @OneToMany(() => WalletEntity, (wallet) => wallet.user)
   wallet: WalletEntity;
 
-  @Column({ name: 'actived' })
+  @Column({ name: 'actived', default: true })
   actived: boolean;
 
   @Column({ type: 'timestamp', name: 'created_at' })

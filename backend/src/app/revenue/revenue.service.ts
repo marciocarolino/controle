@@ -123,6 +123,7 @@ export class RevenueService {
 
     return this.revenuEntity.save(findRevenue);
   }
+
   async disableRevenue(
     revenueDTO: RevenueDTO,
     id_revenue: number,
